@@ -1,0 +1,13 @@
+from openpyxl import load_workbook
+import pandas as pd
+
+def to_excel(df,file_path):
+    writer = pd.ExcelWriter(filepath,engine='openpyxl')
+    book = load_workbook(writer.path)
+    writer.book = book
+    
+    for i range(len(df)):
+        df[i].to_excel(writer,sheet_name,startrow = i*n ,
+        encoding = 'gbk',float_format ='%.2f')
+    
+    writer.close()
